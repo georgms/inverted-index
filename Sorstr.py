@@ -19,7 +19,7 @@ class Sorstr:
         for file in files:
             with open(file, 'r') as f:
                 contents = f.read()
-                terms = re.split('[\s]+', contents)
+                terms = re.split('[\s\W]+', contents)
                 terms = list(filter(None, terms))
                 for term in terms:
                     if term not in self.inverted_index:
