@@ -40,6 +40,11 @@ class Sorstr:
         for query_term in query_terms:
             postings = self.inverted_index.get(query_term)
 
+            # No results found for this query term. Since we're using AND search we can abort right away.
+            if not postings:
+                matching_files = []
+                break
+
             if not matching_files:
                 matching_files = postings
             else:
