@@ -15,7 +15,7 @@ def ask_for_query():
 def main():
     sorstr = Sorstr()
 
-    pattern = 'resources/*.txt'
+    pattern = 'resources/corpus/*.txt'
     sorstr.index(pattern)
     while True:
         query = ask_for_query()
