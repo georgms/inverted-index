@@ -7,15 +7,29 @@ class TestSorstr(unittest.TestCase):
     def test(self):
         sorstr = Sorstr()
         sorstr.index('resources/*.txt')
-        result = sorstr.search('is text')
-        result.sort()
-        self.assertEquals(['resources/1.txt', 'resources/2.txt'], result)
 
-        result = sorstr.search('is another')
-        self.assertEquals(['resources/2.txt'], result)
+        query = 'is text'
+        result = sorstr.search(query)
+        self.assertEquals(['resources/1.txt', 'resources/2.txt', 'resources/3.txt'], result,
+                          'Wrong result for "{}"'.format(query))
 
-        result = sorstr.search('text')
-        self.assertEquals(['resources/1.txt', 'resources/2.txt'], result)
+        query = 'is another'
+        result = sorstr.search(query)
+        self.assertEquals(['resources/2.txt'], result, 'Wrong result for "{}"'.format(query))
 
-        result = sorstr.search('this')
-        self.assertEquals(['resources/1.txt'], result)
+        query = 'Is Another'
+        result = sorstr.search(query)
+        self.assertEquals(['resources/2.txt'], result, 'Wrong result for "{}"'.format(query))
+
+        query = 'text'
+        result = sorstr.search(query)
+        self.assertEquals(['resources/1.txt', 'resources/2.txt', 'resources/3.txt'], result,
+                          'Wrong result for "{}"'.format(query))
+
+        query = 'blubbergurken'
+        result = sorstr.search(query)
+        self.assertEquals([], result, 'Wrong result for "{}"'.format(query))
+
+        query = 'text blubbergurken'
+        result = sorstr.search(query)
+        self.assertEquals([], result, 'Wrong result for "{}"'.format(query))
