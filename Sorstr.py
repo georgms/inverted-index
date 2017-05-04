@@ -18,7 +18,7 @@ class Sorstr:
         files.sort()
         for file in files:
             with open(file, 'r') as f:
-                contents = f.read()
+                contents = f.read().lower()
                 terms = re.split('[\s\W]+', contents)
                 terms = list(filter(None, terms))
                 for term in terms:
@@ -35,7 +35,7 @@ class Sorstr:
         :return: The list of files matching the query. 
         """
         matching_files = []
-        query_terms = re.split('\s+', query)
+        query_terms = re.split('[\s\W]+', query.lower())
 
         for query_term in query_terms:
             postings = self.inverted_index.get(query_term)
