@@ -3,6 +3,6 @@ python:
   - "3.5"
   - "3.6"
 install: "pip install -r requirements.txt"
-script: pytest
-after_sucess:
-  - CODECLIMATE_REPO_TOKEN=5f25bee4e98640b6166792545f7914964569db3e1ec287937d43b4838422abb9 codeclimate-test-reporter
+script: "coverage run -m py.test"
+after_success:
+  - "CODECLIMATE_REPO_TOKEN=5f25bee4e98640b6166792545f7914964569db3e1ec287937d43b4838422abb9 codeclimate-test-reporter"
