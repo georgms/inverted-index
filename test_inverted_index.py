@@ -1,5 +1,3 @@
-import unittest
-
 from Sorstr import Sorstr
 
 sorstr = Sorstr()
