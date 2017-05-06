@@ -2,7 +2,7 @@ language: python
 python:
   - "3.5"
   - "3.6"
-# command to install dependencies
 install: "pip install -r requirements.txt"
-# command to run tests
 script: pytest
+after_sucess:
+  - CODECLIMATE_REPO_TOKEN=ab7fa82983fba1afa288a66692c6e990a47b3db7 codeclimate-test-reporter
