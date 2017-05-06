@@ -7,6 +7,6 @@
 
 # Instructions
 
-* Install requirements: `pip install -r requirements.txt'
+* Install requirements: `pip install -r requirements.txt`
 * Run tests: `pytest`
 * Run app: `python3 main.py`
