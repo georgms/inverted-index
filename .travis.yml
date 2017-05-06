@@ -5,4 +5,4 @@ python:
 install: "pip install -r requirements.txt"
 script: pytest
 after_sucess:
-  - CODECLIMATE_REPO_TOKEN=ab7fa82983fba1afa288a66692c6e990a47b3db7 codeclimate-test-reporter
+  - CODECLIMATE_REPO_TOKEN=5f25bee4e98640b6166792545f7914964569db3e1ec287937d43b4838422abb9 codeclimate-test-reporter
