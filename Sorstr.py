@@ -1,5 +1,7 @@
+import os
 import re
 from glob import glob
+
 
 class Sorstr:
     def __init__(self):
@@ -28,7 +30,7 @@ class Sorstr:
             terms = re.split('[\s\W]+', contents)
             terms = list(filter(None, terms))
             for term in terms:
-                self.add_term(filename, term)
+                self.add_term(os.path.basename(filename), term)
 
     def add_term(self, filename: str, term: str) -> None:
         """

@@ -1,7 +1,7 @@
 from Sorstr import Sorstr
 
 sorstr = Sorstr()
-sorstr.index('resources/*.txt')
+sorstr.index('test_resources/*.txt')
 
 
 def assert_result(query, expected):
@@ -10,11 +10,11 @@ def assert_result(query, expected):
 
 
 def test_multiple_words_with_multiple_results_are_found():
-    assert_result('is text', ['resources/1.txt', 'resources/2.txt', 'resources/3.txt'])
+    assert_result('is text', ['1.txt', '2.txt', '3.txt'])
 
 
 def test_multiple_words_with_single_result_is_found():
-    assert_result('is another', ['resources/2.txt'])
+    assert_result('is another', ['2.txt'])
 
 
 def test_search_is_case_insensitive():
@@ -23,8 +23,8 @@ def test_search_is_case_insensitive():
     assert result == lc_result
 
 
-def test_single_word_with_multiple_results_are_found():
-    assert_result('text', ['resources/1.txt', 'resources/2.txt', 'resources/3.txt'])
+def test_single_word_with_multiple_results_is_found():
+    assert_result('text', ['1.txt', '2.txt', '3.txt'])
 
 
 def test_non_existing_word_does_not_fail():
