@@ -8,7 +8,12 @@ def ask_for_query():
     :return: The user input.
     """
     print('Enter query, empty to quit:')
-    query = input('? ')
+    try:
+        query = input('? ')
+    except EOFError:
+        # User has cancelled
+        return False
+
     return query
 
 
@@ -20,7 +25,7 @@ def main():
     while True:
         query = ask_for_query()
 
-        if query == '':
+        if not query or query == '':
             break
 
         results = sorstr.search(query)
