@@ -1,4 +1,2 @@
 .idea/
-/.cache/
-/__pycache__/
-/.coverage
+__pycache__/
