@@ -26,9 +26,8 @@ class Sorstr:
         """
 
         with open(filename, 'r') as f:
-            contents = f.read().lower()
-            terms = re.split('[\s\W]+', contents)
-            terms = list(filter(None, terms))
+            contents = f.read()
+            terms = Sorstr.tokenize(contents)
             for term in terms:
                 self.add_term(os.path.basename(filename), term)
 
@@ -53,7 +52,7 @@ class Sorstr:
         :return: The list of files matching the query.
         """
         matching_files = []
-        query_terms = re.split('[\s\W]+', query.lower())
+        query_terms = Sorstr.tokenize(query)
 
         for query_term in query_terms:
             postings = self.inverted_index.get(query_term)
@@ -72,6 +71,25 @@ class Sorstr:
         matching_files.sort()
 
         return matching_files
+
+    @staticmethod
+    def tokenize(text: str) -> list:
+        """
+        Tokenize the incoming text.
+
+        Currently just splits on whitespace and non-word characters, so it will return sequences of alphanumeric
+        characters.
+
+        Tokens will be lower-cased.
+
+        :param text: The text to tokenize
+        :return: The tokens
+        """
+        text = text.lower()
+        tokens = re.split('[\s\W]+', text)
+        # Filter out empty terms
+        tokens  = list(filter(None, tokens))
+        return tokens
 
     @staticmethod
     def intersect_results(matching_files: list, postings: list) -> list:
