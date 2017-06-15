@@ -31,5 +31,5 @@ def main():
         results = sorstr.search(query)
         print(results)
 
-
-main()
+if __name__ == '__main__':
+    main()
